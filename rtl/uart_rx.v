@@ -123,11 +123,12 @@ always @(posedge clk) begin
                 if (rxd) begin
                     m_axis_tdata_reg <= data_reg;
                     m_axis_tvalid_reg <= 1;
-                    overrun_error_reg <= m_axis_tvalid_reg;
-                end else begin
+                    overrun_error_reg <= ~m_axis_tvalid_reg;
+                end 
+            end
+            else begin
                     frame_error_reg <= 1;
                 end
-            end
         end else begin
             busy_reg <= 0;
             if (!rxd) begin
