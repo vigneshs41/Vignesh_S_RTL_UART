@@ -79,11 +79,11 @@ uart_tx_inst (
     .clk(clk),
     .rst(rst),
     // axi input
-    .s_axis_tdata(s_axis_tdata),
-    .s_axis_tvalid(s_axis_tvalid),
-    .s_axis_tready(s_axis_tready),
+    .s_axis_tdata(m_axis_tdata),
+    .s_axis_tvalid(m_axis_tvalid),
+    .s_axis_tready(m_axis_tready),
     // output
-    .txd(txd),
+    .txd(rxd),
     // status
     .busy(tx_busy),
     // configuration
@@ -91,17 +91,17 @@ uart_tx_inst (
 );
 
 uart_rx #(
-    .DATA_WIDTH(DATA_WIDTH)
+    .DATA_WIDTH(DATA_WIDTH+1)
 )
 uart_rx_inst (
     .clk(clk),
-    .rst(rst),
+    .rst(~rst),
     // axi output
-    .m_axis_tdata(m_axis_tdata),
-    .m_axis_tvalid(m_axis_tvalid),
-    .m_axis_tready(m_axis_tready),
+    .m_axis_tdata(s_axis_tdata),
+    .m_axis_tvalid(s_axis_tvalid),
+    .m_axis_tready(s_axis_tready),
     // input
-    .rxd(rxd),
+    .rxd(txd),
     // status
     .busy(rx_busy),
     .overrun_error(rx_overrun_error),
