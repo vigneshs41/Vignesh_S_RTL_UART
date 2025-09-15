@@ -1,7 +1,7 @@
 # Verilog UART Readme
 
 
-## Deprecation Notice
+##  About Me:
 
 About Me:
 My name is Vignesh, from India, and I am currently working at CDAC as an RTL Design Engineer. I have 3.8+ years of experience in RTL design, specializing in microarchitecture, cache design, and verification.
